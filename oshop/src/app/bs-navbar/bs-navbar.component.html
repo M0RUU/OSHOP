@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Offcanvas navbar large">
+    <div class="container-fluid">
+        <ul class="navbar-nav justify-content-space-between flex-grow-1 pe-3">
+            <a href="" class="navbar-brand" routerLink="/">Oshop</a>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/shopping-cart" href="#">Shopping Cart</a>
+            </li>
+            <ng-template #anonymousUser>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/login" href="#">Login</a>
+                </li>
+            </ng-template>
+            <li ngbDropdown *ngIf="authsv.user$ | async as user; else anonymousUser" class="nav-item dropdown">
+                <a ngbDropdownToggle class="nav-link dropdown-toggle" role="button" aria-expanded="false">
+                    {{ user.displayName }}
+                </a>
+                <ul ngbDropdownMenu class="dropdown-menu">
+                    <li><a class="dropdown-item" routerLink="/my/orders">My Orders</a></li>
+                    <li><a class="dropdown-item" routerLink="/admin/orders">Manage Orders</a></li>
+                    <li><a class="dropdown-item" routerLink="/admin/products">Manage Products</a></li>
+                    <li><a class="dropdown-item" (click)="logout()">Log Out</a></li>
+                </ul>
+            </li> 
+        </ul>
+        <div class="offcanvas offcanvas-end text-bg-dark" style="flex-grow: 0;" tabindex="-1" id="offcanvasNavbar2"
+            aria-labelledby="offcanvasNavbar2Label">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNavbar2Label">Offcanvas</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                    aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+
+                <form class="d-flex mt-3 mt-lg-0" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</nav>
