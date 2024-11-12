@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Offcanvas navbar large">
+    <div class="container">
+        <ul class="navbar-nav justify-content-space-between flex-grow-1 pe-3">
+            <a href="" class="navbar-brand" routerLink="/">
+                <i class="fa fa-leaf" aria-hidden="true"></i>
+            </a>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/shopping-cart" href="#">
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                    <span class="badge rounded-pill bg-danger" *ngIf="cart$ | async as cart">
+                        {{ cart.totalItemsCount }}
+                    </span>
+                </a>
+            </li>
+            <ng-template #anonymousUser>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/login" href="#">Login</a>
+                </li>
+            </ng-template>
+            <li ngbDropdown *ngIf="appUser; else anonymousUser" class="nav-item dropdown">
+                <a ngbDropdownToggle class="nav-link dropdown-toggle" role="button" aria-expanded="false">
+                    {{ appUser.name }}
+                </a>
+                <ul ngbDropdownMenu class="dropdown-menu">
+                    <li><a class="dropdown-item" routerLink="/my/orders">My Orders</a></li>
+                    <ng-container *ngIf="appUser.isAdmin">
+                        <li><a class="dropdown-item" routerLink="/admin/orders">Manage Orders</a></li>
+                        <li><a class="dropdown-item" routerLink="/admin/products">Manage Products</a></li>
+                    </ng-container>
+                    <li><a class="dropdown-item" (click)="logout()">Log Out</a></li>
+                </ul>
+            </li> 
+        </ul>
+    </div>
+</nav>

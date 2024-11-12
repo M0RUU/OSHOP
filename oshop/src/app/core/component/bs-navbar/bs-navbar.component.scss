@@ -1,0 +1,15 @@
+.dropdown-toggle {
+    cursor: pointer;
+}
+
+.dropdown-item {
+    cursor: pointer;
+}
+
+.bg-danger {
+    background-color: rgb(1, 246, 250) !important;
+}
+
+.dropdown-toggle::after {
+    color:rgb(132, 103, 103);
+}

@@ -1,0 +1,21 @@
+.thumbnail {
+    width: 60px;
+    height: 60px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.table th, .table td {
+    vertical-align: middle;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-end {
+    text-align: right;
+}
